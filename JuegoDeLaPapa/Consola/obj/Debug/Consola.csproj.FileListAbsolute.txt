@@ -1,0 +1,8 @@
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\bin\Debug\Consola.exe.config
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\bin\Debug\Consola.exe
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\bin\Debug\Consola.pdb
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\obj\Debug\Consola.csproj.AssemblyReference.cache
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\obj\Debug\Consola.csproj.SuggestedBindingRedirects.cache
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\obj\Debug\Consola.csproj.CoreCompileInputs.cache
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\obj\Debug\Consola.exe
+C:\Users\ignac\OneDrive\Universidad\3er año\Programación II\JuegoPapa\JuegoDeLaPapa\Consola\obj\Debug\Consola.pdb
