@@ -12,28 +12,37 @@ namespace Consola
         static void Main(string[] args)
         {
             ServicioWeb.ServiceClient serviceClient = new ServicioWeb.ServiceClient();
-            ;
             
-            List<int> listaRandoms = new List<int>();
+            
+            
             Random random = new Random();
+            int dadosPorLanzar = 6;
 
             Console.WriteLine("Empieza el juego.");
             
-            for(int i = 0; i < 5; i++)
+
+            while(dadosPorLanzar > 1)
             {
-                listaRandoms.Add(random.Next(1, 7));
+                List<int> listaRandoms = new List<int>();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    listaRandoms.Add(random.Next(1, dadosPorLanzar));
+                }
+
+                ServicioWeb.Resultado resultado = serviceClient.ObtenerNumeros(listaRandoms.ToArray());
+                dadosPorLanzar = resultado.DadosPorLanzar;
+
+                foreach (var lista in listaRandoms)
+                {
+                    Console.WriteLine(lista);
+                }
+
+                Console.WriteLine($"Puntaje: {resultado.Puntaje}");
+                Console.WriteLine($"Cantidad de dados que se vuelven a lanzar: {dadosPorLanzar}");
+                Console.WriteLine(resultado.Descripcion);
+                
             }
-
-            ServicioWeb.Resultado resultado = serviceClient.ObtenerNumeros(listaRandoms.ToArray());
-
-            foreach(var lista in listaRandoms)
-            {
-                Console.WriteLine(lista);
-            }
-
-            Console.WriteLine(resultado.Puntaje);
-            Console.WriteLine(resultado.Descripcion);
-            Console.WriteLine(resultado.DadosPorLanzar);
 
             Console.WriteLine("Fin");
 

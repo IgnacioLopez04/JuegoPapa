@@ -12,14 +12,13 @@ public class Service : IService
     private int[] arrayNumerosDados = new int[] { 1, 2, 3, 4, 5, 6 };
     static int[] arrayNumerosNuevos = new int[] { };
     const int indiceRepetidos = 7;
-    int[] arrayResultados = new int[indiceRepetidos] {0,0,0,0,0,0,0};
+    static int[] arrayResultados = new int[indiceRepetidos] {0,0,0,0,0,0,0};
     static int suma = 0;
     public Resultado ObtenerNumeros(List<int> numeros)
     {
         Resultado resultado = new Resultado();
 
         EncontrarIgualdades(numeros);
-
 
         return ResultadoJuego(resultado);
     }
@@ -49,11 +48,15 @@ public class Service : IService
 
     private int SumarResultados(int valor)
     {
+        return suma + valor;
+    }
+    private int SumarResultados()
+    {
         for (int i = 0; i < arrayResultados.Length - 1; i++)
         {
             if (arrayResultados[i] >= 2)
             {
-                suma += ((i + 1) * arrayResultados[i]) + valor;
+                suma += ((i + 1) * arrayResultados[i]);
             }
         }
 
@@ -84,7 +87,7 @@ public class Service : IService
 
             case 2:
                 {
-                    resultado.Puntaje = SumarResultados(0);
+                    resultado.Puntaje = SumarResultados();
                     resultado.Descripcion = "Ganaste. Volve a lanzar.";
                     resultado.DadosPorLanzar = 3;
                 }
@@ -92,7 +95,7 @@ public class Service : IService
 
             case 3:
                 {
-                    resultado.Puntaje = SumarResultados(0);
+                    resultado.Puntaje = SumarResultados();
                     resultado.Descripcion = "Ganaste. Volve a lanzar.";
                     resultado.DadosPorLanzar = 2;
                 }
@@ -100,15 +103,23 @@ public class Service : IService
 
             case 4:
                 {
-                    resultado.Puntaje = SumarResultados(0);
+                    resultado.Puntaje = SumarResultados();
                     resultado.Descripcion = "Perdiste pero sumaste puntos.";
                     resultado.DadosPorLanzar = 1;
                 }
                 break;
 
+            case 5:
+                {
+                    resultado.Puntaje = SumarResultados();
+                    resultado.Descripcion = "Ganaste. Volve a lanzar.";
+                    resultado.DadosPorLanzar = 0;
+                }
+                break;
+
             default:
                 {
-                    resultado.Puntaje = SumarResultados(0);
+                    resultado.Puntaje = SumarResultados();
                     resultado.Descripcion = "Perdiste";
                 }
                 break;
