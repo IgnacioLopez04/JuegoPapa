@@ -11,13 +11,16 @@ public class Service : IService
 {
     private int[] arrayNumerosDados = new int[] { 1, 2, 3, 4, 5, 6 };
     static int[] arrayNumerosNuevos = new int[] { };
-    const int indiceRepetidos = 6;
-    static int[] arrayResultados = new int[indiceRepetidos] {0,0,0,0,0,0};
+    const int indiceRepetidos = 7;
+    int[] arrayResultados = new int[indiceRepetidos] {0,0,0,0,0,0,0};
     static int suma = 0;
     public Resultado ObtenerNumeros(List<int> numeros)
-    { 
+    {
+        Resultado resultado = new Resultado();
+
         EncontrarIgualdades(numeros);
-        
+
+
         return ResultadoJuego(resultado);
     }
 
@@ -25,7 +28,7 @@ public class Service : IService
     {
         arrayNumerosNuevos = numeros.ToArray();
 
-        for (int i = 0; i < arrayNumerosNuevos.Length; i++)
+        for (int i = 0; i < indiceRepetidos - 1; i++)
         {
             for (int j = 0; j < arrayNumerosNuevos.Length; j++)
             {
@@ -46,11 +49,11 @@ public class Service : IService
 
     private int SumarResultados(int valor)
     {
-        for (int i = 0; i < arrayResultados.Length; i++)
+        for (int i = 0; i < arrayResultados.Length - 1; i++)
+        {
+            if (arrayResultados[i] >= 2)
             {
-            if (arrayResultados[i] <= 2)
-            {
-                suma += (i * arrayResultados[i]) + valor;
+                suma += ((i + 1) * arrayResultados[i]) + valor;
             }
         }
 
@@ -59,6 +62,7 @@ public class Service : IService
 
     private Resultado ResultadoJuego(Resultado resultado)
     {
+
         switch (arrayResultados[indiceRepetidos - 1])
         {
             case 0:
@@ -66,12 +70,14 @@ public class Service : IService
                     if (arrayNumerosNuevos.ToList().Contains(1) && !arrayNumerosNuevos.ToList().Contains(6) || arrayNumerosNuevos.ToList().Contains(6) && !arrayNumerosNuevos.ToList().Contains(1))
                     {
                         resultado.Puntaje = SumarResultados(20);
-                        resultado.Descripcion = "Sos re capo negrazo.";
+                        resultado.Descripcion = "Ganaste. Volve a lanzar.";
+                        resultado.DadosPorLanzar = 5;
                     }
                     else
                     {
                         resultado.Puntaje = SumarResultados(-20);
-                        resultado.Descripcion = "Sos re capo negrazo.";
+                        resultado.Descripcion = "Perdiste.";
+                        resultado.DadosPorLanzar = 0;
                     }
                 }
                 break;
@@ -79,28 +85,31 @@ public class Service : IService
             case 2:
                 {
                     resultado.Puntaje = SumarResultados(0);
-                    resultado.Descripcion = "Sos re capo negrazo." ;
+                    resultado.Descripcion = "Ganaste. Volve a lanzar.";
+                    resultado.DadosPorLanzar = 3;
                 }
                 break;
 
             case 3:
                 {
                     resultado.Puntaje = SumarResultados(0);
-                    resultado.Descripcion = "Sos re capo negrazo.";
+                    resultado.Descripcion = "Ganaste. Volve a lanzar.";
+                    resultado.DadosPorLanzar = 2;
                 }
                 break;
 
             case 4:
                 {
                     resultado.Puntaje = SumarResultados(0);
-                    resultado.Descripcion = "Sos re capo negrazo.";
+                    resultado.Descripcion = "Perdiste pero sumaste puntos.";
+                    resultado.DadosPorLanzar = 1;
                 }
                 break;
 
             default:
                 {
                     resultado.Puntaje = SumarResultados(0);
-                    resultado.Descripcion = "Sos re capo negrazo.";
+                    resultado.Descripcion = "Perdiste";
                 }
                 break;
         }

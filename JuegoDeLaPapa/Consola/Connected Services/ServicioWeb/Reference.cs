@@ -23,6 +23,9 @@ namespace Consola.ServicioWeb {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int DadosPorLanzarField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DescripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -35,6 +38,19 @@ namespace Consola.ServicioWeb {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int DadosPorLanzar {
+            get {
+                return this.DadosPorLanzarField;
+            }
+            set {
+                if ((this.DadosPorLanzarField.Equals(value) != true)) {
+                    this.DadosPorLanzarField = value;
+                    this.RaisePropertyChanged("DadosPorLanzar");
+                }
             }
         }
         

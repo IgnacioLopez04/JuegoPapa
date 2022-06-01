@@ -12,7 +12,7 @@ namespace Consola
         static void Main(string[] args)
         {
             ServicioWeb.ServiceClient serviceClient = new ServicioWeb.ServiceClient();
-            ServicioWeb.Resultado resultado = new ServicioWeb.Resultado();
+            ;
             
             List<int> listaRandoms = new List<int>();
             Random random = new Random();
@@ -24,9 +24,16 @@ namespace Consola
                 listaRandoms.Add(random.Next(1, 7));
             }
 
-            serviceClient.ObtenerNumeros(listaRandoms.ToArray());
+            ServicioWeb.Resultado resultado = serviceClient.ObtenerNumeros(listaRandoms.ToArray());
+
+            foreach(var lista in listaRandoms)
+            {
+                Console.WriteLine(lista);
+            }
+
             Console.WriteLine(resultado.Puntaje);
             Console.WriteLine(resultado.Descripcion);
+            Console.WriteLine(resultado.DadosPorLanzar);
 
             Console.WriteLine("Fin");
 

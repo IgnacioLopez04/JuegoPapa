@@ -25,9 +25,7 @@ public class Resultado
     [DataMember]
     public  string Descripcion { get; set; }
 
-    public Resultado()
-    {
-
-    }
+    [DataMember]
+    public int DadosPorLanzar { get; set; }
 
 }
